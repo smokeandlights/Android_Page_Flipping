@@ -1,7 +1,7 @@
 
 #include <Mouse.h>
-int pages = 3;
-int swipeLength = 9;
+int pages = 3; //The number of pages that will be flipped
+int swipeLength = 9;//this might change, depending on the device.
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   Mouse.end(); //give myself a chance to upload a sketch
@@ -9,7 +9,7 @@ void setup() {
   Mouse.begin();
   Mouse.click();
   delay(500);
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < swipeLength; i++) {
     digitalWrite(LED_BUILTIN, HIGH);
     Mouse.press();
     Mouse.move(-swipeLength, 0, 0);
@@ -19,10 +19,10 @@ void setup() {
 }
 void loop() {
   for (int i = 0; i < pages; i++) {
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < swipeLength; i++) {
       digitalWrite(LED_BUILTIN, HIGH);
       Mouse.press();
-      Mouse.move(-swipeLength, 0, 0);
+      Mouse.move(-10, 0, 0);
       delay(10);
     }
     delay(100);
@@ -30,21 +30,21 @@ void loop() {
     delay(1000);
     digitalWrite(LED_BUILTIN, LOW);
     delay(1000);
-    for (int i = 0; i < 10; i++) {
-      Mouse.move(swipeLength, 0, 0);
+    for (int i = 0; i < swipeLength; i++) {
+      Mouse.move(10, 0, 0);
       delay(10);
     }
   }
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < swipeLength; i++) {
     digitalWrite(LED_BUILTIN, HIGH);
-    Mouse.move(-swipeLength, 0, 0);
+    Mouse.move(-10, 0, 0);
     delay(10);
   }
   for (int i = 0; i < pages; i++) {
     digitalWrite(LED_BUILTIN, HIGH);
     Mouse.press();
-    for (int i = 0; i < 10; i++) {
-      Mouse.move(swipeLength, 0, 0);
+    for (int i = 0; i < swipeLength; i++) {
+      Mouse.move(10, 0, 0);
       delay(10);
     }
     delay(100);
@@ -52,14 +52,14 @@ void loop() {
     delay(1000);
     digitalWrite(LED_BUILTIN, LOW);
     delay(1000);
-    for (int i = 0; i < 10; i++) {
-      Mouse.move(-swipeLength, 0, 0);
+    for (int i = 0; i < swipeLength; i++) {
+      Mouse.move(-10, 0, 0);
       delay(10);
     }
   }
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < swipeLength; i++) {
     digitalWrite(LED_BUILTIN, HIGH);
-    Mouse.move(swipeLength, 0, 0);
+    Mouse.move(10, 0, 0);
     delay(10);
   }
 }
